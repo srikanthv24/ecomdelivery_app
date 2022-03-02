@@ -1,8 +1,10 @@
-const API_URL = process.env.REACT_BASE_URL;
+const API_URL = process.env.REACT_APP_BASE_URL;
 
 export class Orders {
     static getOrders = (action) => {
-        return fetch(`https://c3vy4pkb7g.execute-api.ap-south-1.amazonaws.com/prod/deliverypartner?mobile=9550163323&fromdate=2022-02-24&todate=2022-02-25`, {
+        console.log("ACTION_GETORDERS_API", action);
+        const {mobile, fromDate, toDate} = action.payload;
+        return fetch(`${API_URL}/deliverypartner?mobile=${mobile}&fromdate=${fromDate}&todate=${toDate}`, {
             method: 'get',
             headers: { 
                 'Content-Type': 'application/json',

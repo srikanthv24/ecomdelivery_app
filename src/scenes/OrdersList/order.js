@@ -17,37 +17,67 @@ export const Order = ({ data, handleOrderData }) => {
     sed_id: sid,
     customer_name: name,
     customer_mobile: mobile,
+    customer_address: address,
     meal_type: mealType,
   } = data;
 
   const handleClick = (e) => {
-    let data = { myId: sid};
+    let data = { myId: sid };
     handleOrderData(data);
     dispatch(filterOrder(sid));
-  }
+  };
   return (
-    <div className="container" className="p-1">
-      <li className="list-group-item">
-        <div className="row">
-          <div className="col">
-            {/* <div className="row">
-              <p className="d-flex mb-0 font-monospace">
-                <small>{`# ${sid}`}</small>
-              </p>
-            </div> */}
-            <div>
-              <p className="d-flex align-middle mb-0 font-monospace">
-                <BsPersonSquare />
-                <small>{name}</small>
+    <div className="container mb-2">
+      <div className="row border border-dark rounded p-2">
+        <div className="p-0">
+          <div class="row">
+            <div class="col" style={{textAlign:"start"}}>
+              <small className="txt">{`# 143`}</small>
+            </div>
+            <div class="col">
+              <p className="d-flex mb-0" style={{display:"flex", justifyContent:"flex-end", alignItems:"middle"}}>
+                <span className="badge bg-secondary p-1">{"yet to deliver"}</span>
               </p>
             </div>
-            <div className="d-flex justify-content-start">
-              <p className="d-flex mb-0 font-monospace">
-                <FaMobileAlt />
+          </div>
+          <div></div>
+          <div>
+            <p className="d-flex mb-0 txt" style={{ alignItems: "center" }}>
+              <BsPersonSquare className="m-1" />
+              <small>{name}</small>
+            </p>
+          </div>
+          <div>
+            <p
+              className="d-flex mb-0 Addtxt"
+              style={{ alignItems: "top", textAlign: "start" }}
+            >
+              <BsPersonSquare className="m-1" />
+
+              <small>{address.toString()}</small>
+            </p>
+          </div>
+          <div className="row">
+            <div className="col d-flex justify-content-start">
+              <p className="mb-0 txt" style={{ alignItems: "center" }}>
+                <FaMobileAlt className="m-1" />
                 <small>{mobile}</small>
               </p>
             </div>
-            <div className="d-flex justify-content-start">
+            <div className="col d-flex justify-content-end">
+              <button
+                type="button"
+                className="btn bg-btn btn-sm"
+                style={{ color: "#ffff" }}
+                onClick={handleClick}
+              >
+                {/* <BsPencil /> */}
+                View
+              </button>
+            </div>
+          </div>
+
+          {/* <div className="d-flex justify-content-start">
               <p>
                 <GiMeal />
                 <small className="font-monospace">{`${
@@ -55,17 +85,9 @@ export const Order = ({ data, handleOrderData }) => {
                   Sessions.filter((obj) => obj.value == mealType)[0].label
                 }`}</small>
               </p>
-            </div>
-          </div>
-          <div className="col d-flex justify-content-end align-bottom">
-            <div>
-              <button type="button" className="btn btn-secondary" onClick={handleClick}>
-                <BsPencil />
-              </button>
-            </div>
-          </div>
+            </div> */}
         </div>
-      </li>
+      </div>
     </div>
   );
 };

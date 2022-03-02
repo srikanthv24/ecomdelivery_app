@@ -12,7 +12,6 @@ import Routes from "./Routes";
 
 function App() {
   const dispatch = useDispatch();
-
   useEffect(() => {
     const getToken = sessionStorage.getItem("access_token");
     if (getToken == null) {

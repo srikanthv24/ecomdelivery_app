@@ -58,11 +58,11 @@
 @media screen and (max-width:600px) {
     .custom-nav {
         align-items: flex-start !important;
-        min-height: 110px;
+        /* min-height: 110px; */
     }
 
     .profile-menu {
-        min-height: 70px;
+        /* min-height: 70px; */
         margin-right: 20px;
     }
 

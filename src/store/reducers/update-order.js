@@ -37,7 +37,7 @@ export const updateOrder = (state = initialState, action) => {
         ...state,
         loading: false, 
         error: false, 
-        message: action.payload, 
+        message: "", 
         open: false, 
         status: false 
       };

@@ -18,11 +18,13 @@ export const orders = (state = initialState, action) => {
         case types.FETCH_ORDERS_SUCCESS:
             return {
                 ...state,
+                loading: false,
                 orderslist: action.payload
             }
         case types.FETCH_ORDERS_FAILURE:
             return {
                 ...state,
+                loading: false,
                 orderslist: [],
                 error: true
             }

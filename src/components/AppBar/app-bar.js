@@ -19,10 +19,7 @@ import { BiArrowBack } from "react-icons/bi";
 import { useHistory, useRouteMatch, Link } from "react-router-dom";
 import { clearUserDetails, getTokenFailure } from "../../store/actions/auth";
 import ProfileImg from "../../assests/images/thumbnail-profile-pic.png";
-//import auth_services from "../../services/auth_services";
 import authServices from "../../services/auth-services";
-//import { showLogin } from "../../store/actions";
-// import arrowRightIcon from "./../../assets/arrow-right.png";
 import arrowRightIcon from "../../assests/images/arrow-right.png";
 import MenuIcon from "../../assests/images/search-normal.svg";
 
@@ -47,8 +44,8 @@ export default function AppBar() {
       <Navbar
         collapseOnSelect
         expand="lg"
-        // bg="light"
-        variant="light"
+        bg="light"
+        //variant="light"
         sticky="top"
         style={{ background: "transparent", position: "fixed", width: "100%" }}
       >
@@ -164,11 +161,11 @@ export default function AppBar() {
           </h6>
 
           <ListGroup variant="flush">
-            <ListGroup.Item
-              // onClick={() => {
-              //   setMenu(false);
-              //   history.push("/");
-              // }}
+            {/* <ListGroup.Item
+              onClick={() => {
+                setMenu(false);
+                history.push("/");
+              }}
             >
               <div
                 className="d-flex align-items-center"
@@ -177,7 +174,7 @@ export default function AppBar() {
                 Home
                 <img src={arrowRightIcon} alt="icon" height="18" />
               </div>
-            </ListGroup.Item>
+            </ListGroup.Item> */}
             {userDetails.sub ? (
               <>
                 <ListGroup.Item
@@ -210,7 +207,7 @@ export default function AppBar() {
                     className="d-flex align-items-center"
                     style={{ justifyContent: "space-between" }}
                   >
-                    Todays Deliveries
+                    Todays Deliverables
                     <img src={arrowRightIcon} alt="icon" height="18" />
                   </div>
                 </ListGroup.Item>

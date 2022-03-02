@@ -1,24 +1,55 @@
 import React from "react";
 import { Button, Modal } from "react-bootstrap";
-import { useSelector } from "react-redux";
 
-export const OrderView = ({show, handleDeliverBtn, handleCancelBtn, handleClose, OrderData}) => {
-    const { customer_address, customer_mobile, customer_name, event_type, meal_type, product, sed_id} = OrderData;
+export const OrderView = ({
+  show,
+  handleDeliverBtn,
+  handleCancelBtn,
+  handleClose,
+  OrderData,
+}) => {
+  const {
+    customer_address: address,
+    customer_mobile: mobile,
+    customer_name: name,
+    event_type,
+    meal_type,
+    product: items,
+    sed_id,
+  } = OrderData;
+
+  console.log("nayan", OrderData)
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>ID #</Modal.Title>
+        <Modal.Title>#143</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h1>{customer_name}</h1>
-        <h2>{customer_mobile}</h2>
+        <h6>{name}</h6>
+        <h6>{mobile}</h6>
+        <h6>{address}</h6>
+        <div className="border border-dark rounded p-2">
+          <h6>Order Details</h6>
+          {items && items.length > 0 && items.map(item => {
+            return (
+              <div class="row">
+              <div class="col-9">
+              <small className="mb-0">{item.display_name}</small>
+              </div>
+              <div class="col-3">
+              <small className="mb-0">-{item.qty}No's</small>
+              </div>
+            </div> 
+            )
+          })}
+        </div>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={handleCancelBtn}>
-          Cancel Order
+        <Button variant="success" onClick={handleDeliverBtn}>
+          Deliver
         </Button>
-        <Button variant="primary" onClick={handleDeliverBtn}>
-          Delivered
+        <Button variant="danger" onClick={handleCancelBtn}>
+          Cancel
         </Button>
       </Modal.Footer>
     </Modal>

@@ -1,3 +1,33 @@
-.container {
-    height: 100vh;
+.txt {
+    font-size: 17px!important; 
+    line-height: 30px;
+    font-weight: 500;
+    background: transparent !important; 
+}
+
+.Addtxt {
+    line-height: 30px;
+    font-weight: 500;
+    background: transparent !important; 
+}
+
+.bg-btn{
+    background-color: #f05922 !important;
+}
+
+.modal-header {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 10px 10px 10px !important;
+    border-bottom: 1px solid #dee2e6;
+    border-top-left-radius: calc(0.3rem - 1px);
+    border-top-right-radius: calc(0.3rem - 1px);
+}
+
+.modal-body {
+    position: relative;
+    flex: 1 1 auto;
+    padding: 10px 10px 10px 10px !important;
 }

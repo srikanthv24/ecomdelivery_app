@@ -1,9 +1,9 @@
 import { types } from "../constants";
 
-export const getOrders = (id) => {
+export const getOrders = (data) => {
     return {
         type: types.FETCH_ORDERS,
-        payload: id
+        payload: data
     }
 }
 

@@ -1,8 +1,9 @@
-const API_URL = process.env.REACT_BASE_URL;
+const API_URL = process.env.REACT_APP_BASE_URL;
 
 export class UpdateOrder {
     static updateOrder =  (data) => {
-        return fetch(`https://c3vy4pkb7g.execute-api.ap-south-1.amazonaws.com/prod/kotorder/${data.endPoint}`, {
+      console.log("API_URL",API_URL );
+        return fetch(`${API_URL}/kotorder/${data.endPoint}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

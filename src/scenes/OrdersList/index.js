@@ -5,12 +5,24 @@ import { OrderView } from "./order-view";
 import { changeEventType, getOrders } from "../../store/actions";
 import { useDispatch, useSelector } from "react-redux";
 import "./styles.css";
-import dummylist from "./delivery_list";
+//import dummylist from "./delivery_list";
+import { DissmisibleAlert } from "../../components/Alert/alert";
+import { closeFeedbackSnackbar } from "../../store/actions";
+import moment from "moment";
+import { Spinner } from "../../components/Spinner/spinner";
 
 export const OrdersList = () => {
   const dispatch = useDispatch();
-  const { orderslist, filterOrder } = useSelector((state) => state.orders);
+  const {
+    loading: ordersLoading,
+    error: ordersError,
+    orderslist,
+    filterOrder,
+  } = useSelector((state) => state.orders);
   const { userDetails } = useSelector((state) => state.auth);
+  const { loading, error, message, open, status } = useSelector(
+    (state) => state.updateOrder
+  );
 
   const [list, setList] = useState([]);
   const [currentOrder, setCurrentOrder] = useState({});
@@ -18,11 +30,15 @@ export const OrdersList = () => {
 
   const handleUpdateOrder = () => {
     setShow(false);
-    console.log("ORDER_DELIVERED")
     dispatch(
       changeEventType({
         endPoint: "markasdelivered",
         payload: { sed_id: [currentOrder.sed_id] },
+        filters: {
+          mobile: userDetails.phone_number.replace("+91", ""),
+          fromDate: moment().format("YYYY-MM-DD"),
+          toDate: moment().add(1, "days").format("YYYY-MM-DD"),
+        },
       })
     );
   };
@@ -32,15 +48,19 @@ export const OrdersList = () => {
   const handleCancelModal = () => {
     setCancelModal(true);
     setShow(false);
-  }
+  };
 
   const handleOrderCancel = (data) => {
     setCancelModal(false);
-    console.log("ORDER_CANCELLED", data)
     dispatch(
       changeEventType({
         endPoint: "cancelorder",
         payload: { sed_id: [currentOrder.sed_id], comments: data },
+        filters: {
+          mobile: userDetails.phone_number.replace("+91", ""),
+          fromDate: moment().format("YYYY-MM-DD"),
+          toDate: moment().add(1, "days").format("YYYY-MM-DD"),
+        },
       })
     );
   };
@@ -51,8 +71,16 @@ export const OrdersList = () => {
   useEffect(() => {
     if (userDetails.phone_number && userDetails.phone_number?.length) {
       let mobNum = userDetails.phone_number.replace("+91", "");
+      let fDate = moment().format("YYYY-MM-DD");
+      let tDate = moment().add(1, "days").format("YYYY-MM-DD");
       // let mobNum = "9951882523"
-      dispatch(getOrders(mobNum));
+      dispatch(
+        getOrders({
+          mobile: mobNum,
+          fromDate: fDate,
+          toDate: tDate,
+        })
+      );
     }
   }, [userDetails.phone_number]);
 
@@ -74,6 +102,10 @@ export const OrdersList = () => {
     setShow(true);
   };
 
+  // const closeDismisibleModal = () => {
+  //   dispatch(closeFeedbackSnackbar())
+  // }
+
   console.log("listXXX", list);
 
   return (
@@ -83,36 +115,43 @@ export const OrdersList = () => {
         OrderData={currentOrder}
         handleDeliverBtn={handleUpdateOrder}
         handleCancelBtn={handleCancelModal}
+        handleClose={() => setShow(false)}
       />
       <CancelOrder
         showModal={cancelModal}
         handleOrderCancel={handleOrderCancel}
         handleClose={() => setCancelModal(false)}
       />
-<div className="alert alert-warning d-flex align-items-center" role="alert">
-  <div>
-    Order is Delivered
-  </div>
-</div>
-
+      <DissmisibleAlert
+        show={open}
+        message={message}
+        status={status}
+        handleClose={() => dispatch(closeFeedbackSnackbar())}
+      />
       <div className="d-flex justify-content-center">
-        <h3>Todays Deliveries</h3>
+        <h3>Deliverables</h3>
       </div>
       <div className="d-flex justify-content-end">
         <h6>
-          Orders <span className="badge bg-primary">{list.length || 0}</span>
+          Orders <span className="badge bg-btn">{list.length || 0}</span>
         </h6>
       </div>
       <ol className="list-group">
-        {list && list.length === 0 && (
+        {ordersLoading || loading ? <div className="mt-5"><Spinner /></div> : null}
+        {list && list.length === 0 && !ordersLoading && (
           <h6 className="mt-5">No Orders Assigned</h6>
         )}
-        {list && list.length>0 && list.map((data, index) => {
-        {/* {dummylist.map((data, index) => { */}
-          return (
-            <Order key={index} data={data} handleOrderData={handleOrderData} />
-          );
-        })}
+        {list &&
+          list.length > 0 &&
+          list.map((data, index) => {
+            return (
+              <Order
+                key={index}
+                data={data}
+                handleOrderData={handleOrderData}
+              />
+            );
+          })}
       </ol>
     </div>
   );

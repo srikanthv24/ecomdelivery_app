@@ -3,16 +3,17 @@ import { UpdateOrder } from '../../services/api';
 import { all, takeLatest, put, call } from 'redux-saga/effects';
 
 function* updateOrder(action) {
+    console.log("MY_SRIKANTH", action);
     const response = yield call(UpdateOrder.updateOrder, action.payload);
         if (response.body && !response.body.error) {
             yield put({
                 type: types.CHANGE_EVENT_TYPE_SUCCESS,
                 payload: response.body
             });
-            // yield put({
-            //     type: types.GET_KOT_ORDERS,
-            //     payload: action.payload.filters
-            // });
+            yield put({
+                type: types.FETCH_ORDERS,
+                payload: action.payload.filters
+            });
         // } else if(response.message === "The incoming token has expired"){
         //     yield put({
 		// 		type: types.SESSION_EXPIRED,
@@ -26,7 +27,7 @@ function* updateOrder(action) {
         }else {
             yield put({
                 type: types.CHANGE_EVENT_TYPE_FAILURE,
-                payload: response.body
+                payload: response.message
             });
         }
 }
