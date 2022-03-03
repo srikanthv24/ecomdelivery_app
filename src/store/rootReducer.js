@@ -2,13 +2,17 @@ import { combineReducers } from 'redux';
 import {
     AuthReducer,
     orders,
-    updateOrder
+    updateOrder,
+    deliveriesList,
+    sessionExpireReducer
 } from './reducers';
 
 const rootReducer = combineReducers({
     auth: AuthReducer,
     orders : orders,
-    updateOrder
+    updateOrder,
+    deliveriesList,
+    sessionExpire: sessionExpireReducer
 })
 
 export default rootReducer;

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import authServices from "../services/auth-services";
 import {
   clearUserDetails,
@@ -9,9 +9,11 @@ import {
 } from "../store/actions";
 import "./App.css";
 import Routes from "./Routes";
+import { SessionModal } from "../components/Session/session-modal";
 
 function App() {
   const dispatch = useDispatch();
+  const {showModal, errors } = useSelector(state => state.sessionExpire);
   useEffect(() => {
     const getToken = sessionStorage.getItem("access_token");
     if (getToken == null) {
@@ -38,6 +40,10 @@ function App() {
 
   return (
     <div className="App">
+      <SessionModal 
+				showModal={showModal}
+				// message={errors[0]?.message}
+			/>
       <Routes />
     </div>
   );

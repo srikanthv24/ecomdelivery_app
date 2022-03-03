@@ -1,7 +1,7 @@
 import React from "react";
 import { BsPencil, BsPersonSquare } from "react-icons/bs";
 import { FaMobileAlt } from "react-icons/fa";
-import { GiMeal } from "react-icons/gi";
+import { FaLandmark } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { filterOrder } from "../../store/actions";
 
@@ -27,20 +27,28 @@ export const Order = ({ data, handleOrderData }) => {
     dispatch(filterOrder(sid));
   };
   return (
-    <div className="container mb-2">
+    <div className="container mb-1">
       <div className="row border border-dark rounded p-2">
         <div className="p-0">
           <div class="row">
-            <div class="col" style={{textAlign:"start"}}>
+            <div class="col" style={{ textAlign: "start" }}>
               <small className="txt">{`# 143`}</small>
             </div>
             <div class="col">
-              <p className="d-flex mb-0" style={{display:"flex", justifyContent:"flex-end", alignItems:"middle"}}>
-                <span className="badge bg-secondary p-1">{"yet to deliver"}</span>
+              <p
+                className="d-flex mb-0"
+                style={{
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  alignItems: "middle",
+                }}
+              >
+                <span className="badge bg-secondary p-1">
+                  {"yet to deliver"}
+                </span>
               </p>
             </div>
           </div>
-          <div></div>
           <div>
             <p className="d-flex mb-0 txt" style={{ alignItems: "center" }}>
               <BsPersonSquare className="m-1" />
@@ -49,12 +57,12 @@ export const Order = ({ data, handleOrderData }) => {
           </div>
           <div>
             <p
-              className="d-flex mb-0 Addtxt"
+              className="d-flex mb-0 txt"
               style={{ alignItems: "top", textAlign: "start" }}
             >
-              <BsPersonSquare className="m-1" />
+              <FaLandmark className="m-1" style={{ fontSize: "20px" }} />
 
-              <small>{address.toString()}</small>
+              <small>{address}</small>
             </p>
           </div>
           <div className="row">
@@ -67,25 +75,14 @@ export const Order = ({ data, handleOrderData }) => {
             <div className="col d-flex justify-content-end">
               <button
                 type="button"
-                className="btn bg-btn btn-sm"
+                className="btn bg-btn btn-sm view-btn"
                 style={{ color: "#ffff" }}
                 onClick={handleClick}
               >
-                {/* <BsPencil /> */}
                 View
               </button>
             </div>
           </div>
-
-          {/* <div className="d-flex justify-content-start">
-              <p>
-                <GiMeal />
-                <small className="font-monospace">{`${
-                  mealType.length &&
-                  Sessions.filter((obj) => obj.value == mealType)[0].label
-                }`}</small>
-              </p>
-            </div> */}
         </div>
       </div>
     </div>

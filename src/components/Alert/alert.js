@@ -1,20 +1,15 @@
 import React, { useState } from "react";
 import { Alert, Button, CloseButton } from "react-bootstrap";
 
-export const DissmisibleAlert = ({ show, status, message, handleClose }) => {
-  // const [show, setShow] = useState(true);
+export const DissmisibleAlert = ({ show, status, message, onClose }) => {
   return (
     <Alert
       show={show}
       variant={`${status ? "success" : "danger"}`}
-      // dismissible 
+      onClose={() => onClose()}
+      dismissible 
     >
-      <p>{message}</p>
-      <div className="d-flex justify-content-end">
-          <Button onClick={handleClose} variant={`${status ? "outline-success" : "outline-danger"}`}>
-           Ok
-          </Button>
-        </div>
+      <p className="mb-0">{message}</p>
     </Alert>
   );
 };

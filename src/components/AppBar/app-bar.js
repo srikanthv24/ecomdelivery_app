@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import vlLogoWhite from "../../assests/images/vl-logo-white.svg";
+import Logo from '../../assests/images/Vibrant-Living-logo.png';
 import {
   Badge,
   Button,
@@ -45,7 +46,7 @@ export default function AppBar() {
         collapseOnSelect
         expand="lg"
         bg="light"
-        //variant="light"
+        variant="light"
         sticky="top"
         style={{ background: "transparent", position: "fixed", width: "100%" }}
       >
@@ -68,10 +69,10 @@ export default function AppBar() {
               <Link to="/">
                 <img
                   alt=""
-                  src={vlLogoWhite}
-                  height="70"
+                  src={Logo}
+                  height="40"
                   className="d-inline-block align-top"
-                  style={{ marginTop: "-.5rem" }}
+                  // style={{ marginTop: "-.5rem" }}
                 />
               </Link>
             </Navbar.Brand>

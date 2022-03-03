@@ -32,12 +32,12 @@ export const OrdersList = () => {
     setShow(false);
     dispatch(
       changeEventType({
-        endPoint: "markasdelivered",
+        endPoint: "kotorder/markasdelivered",
         payload: { sed_id: [currentOrder.sed_id] },
         filters: {
           mobile: userDetails.phone_number.replace("+91", ""),
-          fromDate: moment().format("YYYY-MM-DD"),
-          toDate: moment().add(1, "days").format("YYYY-MM-DD"),
+          startDate: moment().format("YYYY-MM-DD"),
+          // toDate: moment().add(1, "days").format("YYYY-MM-DD"),
         },
       })
     );
@@ -54,12 +54,12 @@ export const OrdersList = () => {
     setCancelModal(false);
     dispatch(
       changeEventType({
-        endPoint: "cancelorder",
+        endPoint: "deliverypartner/cancelorder",
         payload: { sed_id: [currentOrder.sed_id], comments: data },
         filters: {
           mobile: userDetails.phone_number.replace("+91", ""),
-          fromDate: moment().format("YYYY-MM-DD"),
-          toDate: moment().add(1, "days").format("YYYY-MM-DD"),
+          startDate: moment().format("YYYY-MM-DD"),
+          // toDate: moment().add(1, "days").format("YYYY-MM-DD"),
         },
       })
     );
@@ -71,16 +71,17 @@ export const OrdersList = () => {
   useEffect(() => {
     if (userDetails.phone_number && userDetails.phone_number?.length) {
       let mobNum = userDetails.phone_number.replace("+91", "");
-      let fDate = moment().format("YYYY-MM-DD");
-      let tDate = moment().add(1, "days").format("YYYY-MM-DD");
+      let sDate = moment().format("YYYY-MM-DD");
+      // let tDate = moment().add(1, "days").format("YYYY-MM-DD");
       // let mobNum = "9951882523"
       dispatch(
         getOrders({
           mobile: mobNum,
-          fromDate: fDate,
-          toDate: tDate,
+          startDate: sDate,
+          // toDate: tDate,
         })
       );
+      setList([]);
     }
   }, [userDetails.phone_number]);
 
@@ -126,18 +127,21 @@ export const OrdersList = () => {
         show={open}
         message={message}
         status={status}
-        handleClose={() => dispatch(closeFeedbackSnackbar())}
+        onClose={() => dispatch(closeFeedbackSnackbar())}
       />
-      <div className="d-flex justify-content-center">
-        <h3>Deliverables</h3>
-      </div>
-      <div className="d-flex justify-content-end">
-        <h6>
+      <div className="d-flex justify-content-between align-items-center">
+        <h3>Deliverables </h3>
+        <small>
           Orders <span className="badge bg-btn">{list.length || 0}</span>
-        </h6>
+        </small>
       </div>
+      <div className="d-flex justify-content-end"></div>
       <ol className="list-group">
-        {ordersLoading || loading ? <div className="mt-5"><Spinner /></div> : null}
+        {ordersLoading || loading ? (
+          <div className="mt-5">
+            <Spinner />
+          </div>
+        ) : null}
         {list && list.length === 0 && !ordersLoading && (
           <h6 className="mt-5">No Orders Assigned</h6>
         )}
