@@ -1,7 +1,9 @@
+import moment from "moment";
 import React from "react";
 import { BsPersonSquare } from "react-icons/bs";
 import { FaMobileAlt } from "react-icons/fa";
 import { useDispatch } from "react-redux";
+import './styles.css';
 
 const Sessions = [
   { label: "breakfast", value: "B" },
@@ -15,22 +17,37 @@ export const DeliveryCard = ({ data }) => {
     customer_name: name,
     customer_mobile: mobile,
     status: status,
+    event_type: eventType,
+    order_id: orderId,
+    upd_on: updatedOn,
     // customer_address: address
   } = data;
 
   return (
     <div className="container mb-1">
-      <div className="row border border-dark rounded p-2">
-        <div className="p-0" style={{ textAlign: "start" }}>
-          <small className="txt">{`# 143`}</small>
+      <div className="row border border-dark1 rounded p-2">
+      <div className="row m-0 p-0">
+        <div className="col p-0" style={{ textAlign: "start" }}>
+          <small className="txt">{`# ${orderId}`}</small>
         </div>
+        <div className="col p-0">
+            <p
+              className="mb-0 txt"
+              style={{ alignItems: "center", textAlign: "end" }}
+            >
+              <span className="badge bg-primary p-1">
+              { moment(updatedOn, "YYYY-MM-DD hh:mm:ss").utc().local().format("DD-MMM-YYYY hh:mm A")}
+              </span>
+            </p>
+          </div>
+      </div>
         <div className="p-0">
           <p className="d-flex mb-0 txt" style={{ alignItems: "center" }}>
             <BsPersonSquare className="m-1" />
             <small>{name}</small>
           </p>
         </div>
-        <div className="row">
+        <div className="row m-0 p-0">
           <div className="col p-0">
             <p
               className="mb-0 txt"
@@ -45,8 +62,8 @@ export const DeliveryCard = ({ data }) => {
               className="mb-0 txt"
               style={{ alignItems: "center", textAlign: "end" }}
             >
-              <span className="badge bg-primary p-1">
-                {status || "delivered"}
+              <span className={`${status == "C" ? "badge bg-danger p-1" : eventType == "DC" ? "badge bg-success p-1" : "badge bg-primary p-1"}`}>
+                {status === "C" ? "cancelled" : eventType == "DC" ? "delivered": "Inprogress"}
               </span>
             </p>
           </div>

@@ -28,60 +28,47 @@ export const Order = ({ data, handleOrderData }) => {
   };
   return (
     <div className="container mb-1">
-      <div className="row border border-dark rounded p-2">
-        <div className="p-0">
-          <div class="row">
-            <div class="col" style={{ textAlign: "start" }}>
-              <small className="txt">{`# 143`}</small>
-            </div>
-            <div class="col">
-              <p
-                className="d-flex mb-0"
-                style={{
-                  display: "flex",
-                  justifyContent: "flex-end",
-                  alignItems: "middle",
-                }}
-              >
-                <span className="badge bg-secondary p-1">
-                  {"yet to deliver"}
-                </span>
-              </p>
-            </div>
+      <div className="row border border-dark1 rounded p-2">
+        <div className="row m-0 p-0">
+          <div className="col p-0 text-start">
+            <small className="me-2 txt">{`# 143`}</small>
           </div>
-          <div>
-            <p className="d-flex mb-0 txt" style={{ alignItems: "center" }}>
-              <BsPersonSquare className="m-1" />
-              <small>{name}</small>
-            </p>
+          <div className="col p-0 text-end">
+            <p className="badge bg-secondary p-1 mb-0">yet to deliver</p>
           </div>
-          <div>
-            <p
-              className="d-flex mb-0 txt"
-              style={{ alignItems: "top", textAlign: "start" }}
-            >
-              <FaLandmark className="m-1" style={{ fontSize: "20px" }} />
+        </div>
+        <div className="p-0 text-start">
+          <p className="d-flex mb-0 txt" style={{alignItems:"center"}}>
+            <BsPersonSquare className="me-2" />
+            <small>{name}</small>
+          </p>
+        </div>
+        <div className="p-0 text-start">
+          <p
+            className="d-flex mb-0 txt"
+            style={{ alignItems: "top", textAlign: "start" }}
+          >
+            <FaLandmark className="me-2 mt-1" style={{ fontSize: "20px" }} />
 
-              <small>{address}</small>
+            <small>{address}</small>
+          </p>
+        </div>
+        <div className="row m-0 p-0">
+          <div className="col d-flex justify-content-start p-0">
+            <p className="mb-0 txt" style={{ alignItems: "center" }}>
+              <FaMobileAlt className="me-2" />
+              <small>{mobile}</small>
             </p>
           </div>
-          <div className="row">
-            <div className="col d-flex justify-content-start">
-              <p className="mb-0 txt" style={{ alignItems: "center" }}>
-                <FaMobileAlt className="m-1" />
-                <small>{mobile}</small>
-              </p>
-            </div>
-            <div className="col d-flex justify-content-end">
-              <button
-                type="button"
-                className="btn bg-btn btn-sm view-btn"
-                style={{ color: "#ffff" }}
-                onClick={handleClick}
-              >
-                View
-              </button>
-            </div>
+          <div className="col d-flex justify-content-end p-0">
+            <button
+              type="button"
+              className="btn bg-btn btn-sm view-btn"
+              style={{ color: "#ffffff" }}
+              onClick={handleClick}
+            >
+              View
+            </button>
           </div>
         </div>
       </div>

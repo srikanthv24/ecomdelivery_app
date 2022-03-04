@@ -5,3 +5,7 @@
 .bg-primary {
     background-color: "#f05922";
 }
+
+.border-dark1 {
+    border-color: "#d3d3d3 !important";
+}

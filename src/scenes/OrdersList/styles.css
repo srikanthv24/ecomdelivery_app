@@ -1,6 +1,6 @@
 .txt {
     font-size: 17px!important; 
-    line-height: 30px;
+    line-height: 25px;
     font-weight: 500;
     background: transparent !important; 
 }
@@ -40,4 +40,9 @@
     display: flex;
     justify-content: center;
     align-items: center; */
+}
+
+
+.border-dark1 {
+    border-color: "#d3d3d3 !important";
 }
