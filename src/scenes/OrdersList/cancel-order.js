@@ -29,7 +29,7 @@ export const CancelOrder = ({ showModal, handleClose, handleOrderCancel }) => {
         </Form.Group>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="danger" onClick={handleConfirmCancel}>Submit</Button>
+        <Button variant="danger" disabled={feedback.length> 0 ? false : true} onClick={handleConfirmCancel}>Submit</Button>
         <Button onClick={handleClose}>Cancel</Button>
       </Modal.Footer>
     </Modal>

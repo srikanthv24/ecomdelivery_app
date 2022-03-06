@@ -19,7 +19,7 @@ export const OrdersList = () => {
     orderslist,
     filterOrder,
   } = useSelector((state) => state.orders);
-  const { userDetails } = useSelector((state) => state.auth);
+  const { userDetails, tokenList } = useSelector((state) => state.auth);
   const { loading, error, message, open, status } = useSelector(
     (state) => state.updateOrder
   );
@@ -68,23 +68,25 @@ export const OrdersList = () => {
   console.log("myOrders", orderslist);
   console.log("userDEtails", userDetails);
 
-  useEffect(() => {
-    if (userDetails.phone_number && userDetails.phone_number?.length) {
-      let mobNum = userDetails.phone_number.replace("+91", "");
-      let sDate = moment().format("YYYY-MM-DD");
-      // let tDate = moment().add(1, "days").format("YYYY-MM-DD");
-      // let mobNum = "9951882523"
-      dispatch(
-        getOrders({
-          mobile: mobNum,
-          startDate: sDate,
-          // toDate: tDate,
-        })
-      );
-      setList([]);
-    }
-  }, [userDetails.phone_number]);
+  useEffect(async() => {
+      const token = await sessionStorage.getItem("id_token");
 
+      if (userDetails.phone_number && userDetails.phone_number?.length) {
+        let mobNum = userDetails.phone_number.replace("+91", "");
+        let sDate = moment().format("YYYY-MM-DD");
+        // let tDate = moment().add(1, "days").format("YYYY-MM-DD");
+        // let mobNum = "9951882523"
+        dispatch(
+          getOrders({
+            mobile: mobNum,
+            startDate: sDate,
+            // toDate: tDate,
+          })
+        );
+        setList([]);
+      }
+  }, [userDetails.phone_number, tokenList?.accessToken]);
+  
   useEffect(() => {
     if (filterOrder && filterOrder.length) {
       setCurrentOrder(filterOrder[0]);

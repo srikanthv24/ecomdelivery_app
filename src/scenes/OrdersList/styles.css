@@ -5,6 +5,13 @@
     background: transparent !important; 
 }
 
+.normal-txt {
+    font-size: 17px!important; 
+    line-height: 25px;
+    font-weight: 400;
+    background: transparent !important; 
+}
+
 .Addtxt {
     line-height: 30px;
     font-weight: 500;

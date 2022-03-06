@@ -1,15 +1,14 @@
 import React from "react";
-import { BsPencil, BsPersonSquare } from "react-icons/bs";
-import { FaMobileAlt } from "react-icons/fa";
-import { FaLandmark } from "react-icons/fa";
+import { BsPersonSquare } from "react-icons/bs";
+import { FaMobileAlt, FaHashtag, FaLandmark } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { filterOrder } from "../../store/actions";
 
-const Sessions = [
-  { label: "breakfast", value: "B" },
-  { label: "lunch", value: "L" },
-  { label: "dinner", value: "D" },
-];
+// const Sessions = [
+//   { label: "breakfast", value: "B" },
+//   { label: "lunch", value: "L" },
+//   { label: "dinner", value: "D" },
+// ];
 
 export const Order = ({ data, handleOrderData }) => {
   const dispatch = useDispatch();
@@ -18,7 +17,7 @@ export const Order = ({ data, handleOrderData }) => {
     customer_name: name,
     customer_mobile: mobile,
     customer_address: address,
-    meal_type: mealType,
+    // meal_type: mealType,
   } = data;
 
   const handleClick = (e) => {
@@ -31,14 +30,17 @@ export const Order = ({ data, handleOrderData }) => {
       <div className="row border border-dark1 rounded p-2">
         <div className="row m-0 p-0">
           <div className="col p-0 text-start">
-            <small className="me-2 txt">{`# 143`}</small>
+          <p className="d-flex mb-0 normal-txt" style={{alignItems:"center"}}>
+            <FaHashtag className="me-2" />
+            <small>{`143`}</small>
+          </p>
           </div>
           <div className="col p-0 text-end">
             <p className="badge bg-secondary p-1 mb-0">yet to deliver</p>
           </div>
         </div>
         <div className="p-0 text-start">
-          <p className="d-flex mb-0 txt" style={{alignItems:"center"}}>
+          <p className="d-flex mb-0 normal-txt" style={{alignItems:"center"}}>
             <BsPersonSquare className="me-2" />
             <small>{name}</small>
           </p>
@@ -67,7 +69,7 @@ export const Order = ({ data, handleOrderData }) => {
               style={{ color: "#ffffff" }}
               onClick={handleClick}
             >
-              View
+              Details
             </button>
           </div>
         </div>

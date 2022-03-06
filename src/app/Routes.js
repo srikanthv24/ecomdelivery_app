@@ -14,10 +14,10 @@ function Routes() {
     <>
       {!isLoggedIn && (
         <Switch>
-          <Route exact path="/" component={Login} />
-          {/* <Route path="*">
-            <Redirect to="/" />
-          </Route> */}
+           <Route exact path="/login" component={Login} />
+          <Route path="*">
+            <Redirect to="/login" />
+          </Route>
         </Switch>
       )}
       {isLoggedIn && (
@@ -26,12 +26,12 @@ function Routes() {
           <Switch>
             <Route exact path="/deliverieslist" component={DeliveriesList} />
             <Route exact path="/orders" component={OrdersList} />
-            <Route exact path="/">
-            <Redirect to={"/deliverieslist"} />
-          </Route>
-          {/* <Route path="*">
-            <Redirect to={"/"} />
-          </Route> */}
+            {/* <Route exact path="/">
+              <Redirect to={"/orders"} />
+            </Route> */}
+            <Route path="*">
+              <Redirect to={"/orders"} />
+            </Route>
           </Switch>
         </>
       )}

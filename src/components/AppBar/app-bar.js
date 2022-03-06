@@ -162,21 +162,7 @@ export default function AppBar() {
           </h6>
 
           <ListGroup variant="flush">
-            {/* <ListGroup.Item
-              onClick={() => {
-                setMenu(false);
-                history.push("/");
-              }}
-            >
-              <div
-                className="d-flex align-items-center"
-                style={{ justifyContent: "space-between" }}
-              >
-                Home
-                <img src={arrowRightIcon} alt="icon" height="18" />
-              </div>
-            </ListGroup.Item> */}
-            {userDetails.sub ? (
+            {/* {userDetails.sub ? (
               <>
                 <ListGroup.Item
                   className="menuItem"
@@ -194,7 +180,7 @@ export default function AppBar() {
                   </div>
                 </ListGroup.Item>
               </>
-            ) : null}
+            ) : null} */}
             {userDetails.sub ? (
               <>
                 <ListGroup.Item
@@ -240,22 +226,9 @@ export default function AppBar() {
                   style={{ justifyContent: "space-between" }}
                 >
                   Log Out
-                  <img src={arrowRightIcon} alt="icon" height="18" />
                 </div>
               </ListGroup.Item>
-            ) : (
-              <ListGroup.Item
-              //onClick={() => dispatch(showLogin())}
-              >
-                <div
-                  className="d-flex align-items-center"
-                  style={{ justifyContent: "space-between" }}
-                >
-                  Log In
-                  <img src={arrowRightIcon} alt="icon" height="18" />
-                </div>
-              </ListGroup.Item>
-            )}
+            ) : null}
           </ListGroup>
         </Offcanvas.Body>
       </Offcanvas>

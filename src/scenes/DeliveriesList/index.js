@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { DeliveryCard } from "./delivery-card";
-import dummylist from "../OrdersList/delivery_list";
-import { DateInput } from "../../components/DatePicker/datepicker";
+// import dummylist from "../OrdersList/delivery_list";
+// import { DateInput } from "../../components/DatePicker/datepicker";
 import { Form, FormControl, InputGroup } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
@@ -10,14 +10,14 @@ import { Spinner } from "../../components/Spinner/spinner";
 
 export const DeliveriesList = () => {
   const dispatch = useDispatch();
-  const { userDetails } = useSelector((state) => state.auth);
+  // const { userDetails } = useSelector((state) => state.auth);
   const { loading, error, list } = useSelector(state => state.deliveriesList);
   const [ Deliveries, setDeliveries] = useState([]);
   const [filters, setFilters] = useState({
     // mobile: userDetails.phone_number.replace("+91", ""),
     mobile:"9550163323",
-    fromDate: moment().format("YYYY-MM-DD"),
-    toDate: moment().add(10, "days").format("YYYY-MM-DD"),
+    fromDate: moment().subtract(2, 'days').format("YYYY-MM-DD"),
+    toDate: moment().format("YYYY-MM-DD"),
     type: "all"
   });
 

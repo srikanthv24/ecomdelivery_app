@@ -1,7 +1,7 @@
 import moment from "moment";
 import React from "react";
 import { BsPersonSquare } from "react-icons/bs";
-import { FaMobileAlt } from "react-icons/fa";
+import { FaHashtag, FaMobileAlt } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import './styles.css';
 
@@ -28,7 +28,10 @@ export const DeliveryCard = ({ data }) => {
       <div className="row border border-dark1 rounded p-2">
       <div className="row m-0 p-0">
         <div className="col p-0" style={{ textAlign: "start" }}>
-          <small className="txt">{`# ${orderId}`}</small>
+          <p className="d-flex mb-0 normal-txt" style={{alignItems:"center"}}>
+            <FaHashtag className="m-1" />
+            <small>{`${orderId}`}</small>
+          </p>
         </div>
         <div className="col p-0">
             <p
