@@ -27,7 +27,7 @@ export const Order = ({ data, handleOrderData }) => {
     dispatch(filterOrder(sid));
   };
   return (
-    <div className="container mb-1">
+    <div className="container mb-1" onClick={handleClick}>
       <div className="row border border-dark1 rounded p-2">
         <div className="row m-0 p-0">
           <div className="col p-0 text-start">
@@ -38,9 +38,6 @@ export const Order = ({ data, handleOrderData }) => {
               <FaHashtag className="me-2" />
               <small>{orderId}</small>
             </p>
-          </div>
-          <div className="col p-0 text-end">
-            <p className="badge bg-secondary p-1 mb-0">yet to deliver</p>
           </div>
         </div>
         <div className="p-0 text-start">
@@ -70,14 +67,17 @@ export const Order = ({ data, handleOrderData }) => {
             </p>
           </div>
           <div className="col d-flex justify-content-end p-0">
-            <button
+            {/* <button
               type="button"
               className="btn bg-btn btn-sm view-btn"
               style={{ color: "#ffffff" }}
-              onClick={handleClick}
+              // onClick={handleClick}
             >
               Details
-            </button>
+            </button> */}
+            <div className="col p-0 text-end">
+              <p className="badge bg-secondary p-1 mb-0">yet to deliver</p>
+            </div>
           </div>
         </div>
       </div>

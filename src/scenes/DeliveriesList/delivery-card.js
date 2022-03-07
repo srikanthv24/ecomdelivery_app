@@ -34,12 +34,12 @@ export const DeliveryCard = ({ data }) => {
         </div>
         <div className="col p-0">
             <p
-              className="mb-0 txt"
+              className="mb-0 local-date p-1"
               style={{ alignItems: "center", textAlign: "end" }}
             >
-              <span className="badge bg-primary p-1">
+              {/* <span className="badge bg-primary p-1"> */}
               { moment(updatedOn + '+00:00').local().format("DD-MMM-YYYY hh:mm A")}
-              </span>
+              {/* </span> */}
             </p>
           </div>
       </div>
