@@ -37,7 +37,7 @@ export const DeliveriesList = () => {
       <>
         <div className="row">
           <div className="col-6">
-            <InputGroup className="my-2">
+            <InputGroup className="dp-date my-2">
               {/* <InputGroup.Text>Start Date</InputGroup.Text> */}
               <FormControl
                 value={filters.fromDate}
@@ -45,8 +45,7 @@ export const DeliveriesList = () => {
                 max={moment().format("YYYY-MM-DD")}
                 size="sm"
                 type="date"
-                placeholder="Disabled input"
-                style={{ padding: "3px" }}
+                style={{ padding: "3px"}}
                 onChange={(e) => {
                   setFilters({ ...filters, fromDate: e.target.value });
                 }}
@@ -54,7 +53,7 @@ export const DeliveriesList = () => {
             </InputGroup>
           </div>
           <div className="col-6">
-            <InputGroup className="my-2">
+          <InputGroup className="dp-date my-2">
               {/* <InputGroup.Text>Start Date</InputGroup.Text> */}
               <FormControl
                 value={filters.toDate}

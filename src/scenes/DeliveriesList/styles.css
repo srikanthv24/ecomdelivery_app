@@ -27,3 +27,50 @@
     border: 0.5px solid #787878;
     padding: 10px;
 }
+
+/* input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+    width: 15px;
+    padding: 0px;
+    margin: 0px;
+    margin-top: 10px;
+} */
+
+/* input[type="date"]::-webkit-calendar-picker-indicator {
+    color: rgba(0, 0, 0, 0);
+    opacity: 1;
+    display: block;
+    background: url(https://mywildalberta.ca/images/GFX-MWA-Parks-Reservations.png) no-repeat;
+    width: 20px;
+    height: 20px;
+    border-width: thin;
+} */
+
+
+.dp-date input[type="date"] {
+    position: relative;
+    padding: 10px;
+  }
+  
+.dp-date input[type="date"]::-webkit-calendar-picker-indicator {
+    color: transparent;
+    background: none;
+    z-index: 1;
+  }
+  
+  .dp-date input[type="date"]:before {
+    color: transparent;
+    background: none;
+    display: block;
+    font-family: 'FontAwesome';
+    content: '';
+    background:url("../../assests/images/calendar.png") no-repeat; 
+    background-size: 20px auto;
+    width: 20px;
+    height: 20px;   
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    color: #999;
+  }

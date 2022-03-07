@@ -1,8 +1,11 @@
 .txt {
     font-size: 17px!important; 
     line-height: 25px;
-    font-weight: 500;
+    
     background: transparent !important; 
+}
+.txt .badge{
+    font-weight: 400 !important;
 }
 
 .normal-txt {
