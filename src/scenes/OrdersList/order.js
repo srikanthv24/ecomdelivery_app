@@ -35,7 +35,7 @@ export const Order = ({ data, handleOrderData }) => {
               className="d-flex mb-0 normal-txt"
               style={{ alignItems: "center" }}
             >
-              <FaHashtag className="me-2" />
+              <FaHashtag className="me-2" style={{ minWidth:"20px" }} />
               <small>{orderId}</small>
             </p>
           </div>
@@ -45,7 +45,7 @@ export const Order = ({ data, handleOrderData }) => {
             className="d-flex mb-0 normal-txt"
             style={{ alignItems: "center" }}
           >
-            <BsPersonSquare className="me-2" />
+            <BsPersonSquare className="me-2" style={{ minWidth:"20px" }} />
             <small>{name}</small>
           </p>
         </div>
@@ -54,7 +54,7 @@ export const Order = ({ data, handleOrderData }) => {
             className="d-flex mb-0 txt"
             style={{ alignItems: "top", textAlign: "start" }}
           >
-            <FaLandmark className="me-2 mt-1" style={{ fontSize: "20px" }} />
+          <FaLandmark className="me-2 mt-1" style={{ minWidth:"20px" }} />
 
             <small>{address}</small>
           </p>
@@ -62,7 +62,7 @@ export const Order = ({ data, handleOrderData }) => {
         <div className="row m-0 p-0">
           <div className="col d-flex justify-content-start p-0">
             <p className="mb-0 txt" style={{ alignItems: "center" }}>
-              <FaMobileAlt className="me-2" />
+              <FaMobileAlt className="me-2" style={{ minWidth:"20px" }} />
               <small>{mobile}</small>
             </p>
           </div>
