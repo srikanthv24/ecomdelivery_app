@@ -92,7 +92,7 @@ export const DeliveriesList = () => {
             </div>
           )}
           {Deliveries && Deliveries.length === 0 && !loading && (
-            <div className="feedback-container">
+            <div className="feedback-container2">
               <h6>No Deliveries</h6>
             </div>
           )}
