@@ -16,7 +16,7 @@ import VLogo from "../../assests/logos/Vibrant-Living-logo.png";
 import auth_services from '../../services/auth-services';
 import { authLoading, updateUserDetails, loginSuccess, authError} from '../../store/actions';
 import "./styles.css";
-
+import { Spinner } from "../../components/Spinner/spinner";
 
 function Login() {
     //const history = useHistory();
@@ -57,7 +57,7 @@ function Login() {
       };
 
       if (loading) {
-        return <p className="fs-5 fw-bold mt-2 text-center">Loading....</p>;
+        return <Spinner />
       }
 
   return (

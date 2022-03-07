@@ -6,6 +6,7 @@ export const CancelOrder = ({ showModal, handleClose, handleOrderCancel }) => {
 
   const handleConfirmCancel = () => {
     handleOrderCancel(feedback);
+    setFeedback("");
   };
 
   useEffect(() => {
@@ -13,6 +14,11 @@ export const CancelOrder = ({ showModal, handleClose, handleOrderCancel }) => {
       setFeedback("");
     };
   }, []);
+
+  const handleCancelModal = () => {
+    handleClose();
+    setFeedback("");
+  }
 
   return (
     <Modal
@@ -44,7 +50,7 @@ export const CancelOrder = ({ showModal, handleClose, handleOrderCancel }) => {
         >
           Submit
         </Button>
-        <Button onClick={handleClose}>Cancel</Button>
+        <Button onClick={handleCancelModal}>Cancel</Button>
       </Modal.Footer>
     </Modal>
   );

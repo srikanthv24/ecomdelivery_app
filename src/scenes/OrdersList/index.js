@@ -8,7 +8,7 @@ import { Spinner } from "../../components/Spinner/spinner";
 import { DissmisibleAlert } from "../../components/Alert/alert";
 import { changeEventType, getOrders } from "../../store/actions";
 import { closeFeedbackSnackbar } from "../../store/actions";
-import './styles.css';
+import "./styles.css";
 
 export const OrdersList = () => {
   const dispatch = useDispatch();
@@ -28,6 +28,12 @@ export const OrdersList = () => {
   const [show, setShow] = useState(false);
   const [cancelModal, setCancelModal] = useState(false);
 
+  useEffect(() => {
+    return () => {
+      dispatch(closeFeedbackSnackbar());
+    };
+  }, []);
+
   const handleUpdateOrder = () => {
     setShow(false);
     dispatch(
@@ -41,7 +47,6 @@ export const OrdersList = () => {
       })
     );
   };
-
 
   const handleCancelModal = () => {
     setCancelModal(true);
@@ -62,22 +67,22 @@ export const OrdersList = () => {
     );
   };
 
-  useEffect(async() => {
-      const token = await sessionStorage.getItem("id_token");
+  useEffect(async () => {
+    const token = await sessionStorage.getItem("id_token");
 
-      if (userDetails.phone_number && userDetails.phone_number?.length) {
-        let mobNum = userDetails.phone_number.replace("+91", "");
-        let sDate = moment().format("YYYY-MM-DD");
-        dispatch(
-          getOrders({
-            mobile: mobNum,
-            startDate: sDate,
-          })
-        );
-        setList([]);
-      }
+    if (userDetails.phone_number && userDetails.phone_number?.length) {
+      let mobNum = userDetails.phone_number.replace("+91", "");
+      let sDate = moment().format("YYYY-MM-DD");
+      dispatch(
+        getOrders({
+          mobile: mobNum,
+          startDate: sDate,
+        })
+      );
+      setList([]);
+    }
   }, [userDetails.phone_number, tokenList?.accessToken]);
-  
+
   useEffect(() => {
     if (filterOrder && filterOrder.length) {
       setCurrentOrder(filterOrder[0]);
@@ -130,9 +135,13 @@ export const OrdersList = () => {
           </div>
         ) : null}
         {list && list.length === 0 && !ordersLoading && (
-          <h6 className="mt-5">No Orders Assigned</h6>
+          <div className="feedback-container">
+            <h6>No Orders Assigned</h6>
+          </div>
         )}
         {list &&
+          !ordersLoading &&
+          !loading &&
           list.length > 0 &&
           list.map((data, index) => {
             return (

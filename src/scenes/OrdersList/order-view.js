@@ -30,18 +30,20 @@ export const OrderView = ({
         <h6>{address}</h6>
         <div className="border border-dark rounded p-2">
           <h6>Order Details</h6>
-          {items && items.length > 0 && items.map(item => {
-            return (
-              <div class="row">
-              <div class="col-9">
-              <small className="mb-0">{item.display_name}</small>
-              </div>
-              <div class="col-3">
-              <small className="mb-0">-{item.qty}No's</small>
-              </div>
-            </div> 
-            )
-          })}
+          {items &&
+            items.length > 0 &&
+            items.map((item, index) => {
+              return (
+                <div key={index} className="row">
+                  <div className="col-9">
+                    <small className="mb-0">{item.display_name}</small>
+                  </div>
+                  <div className="col-3">
+                    <small className="mb-0">-{item.qty}No's</small>
+                  </div>
+                </div>
+              );
+            })}
         </div>
       </Modal.Body>
       <Modal.Footer>

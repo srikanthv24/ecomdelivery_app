@@ -9,3 +9,21 @@
 .border-dark1 {
     border-color: "#d3d3d3 !important";
 }
+
+.feedback-container {
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.feedback-container h6{
+    border: 0.5px solid #787878;
+    padding: 10px;
+}

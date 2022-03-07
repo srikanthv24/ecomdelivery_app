@@ -2,7 +2,6 @@ import moment from "moment";
 import React from "react";
 import { BsPersonSquare } from "react-icons/bs";
 import { FaHashtag, FaMobileAlt } from "react-icons/fa";
-import { useDispatch } from "react-redux";
 import './styles.css';
 
 const Sessions = [
@@ -39,7 +38,7 @@ export const DeliveryCard = ({ data }) => {
               style={{ alignItems: "center", textAlign: "end" }}
             >
               <span className="badge bg-primary p-1">
-              { moment(updatedOn, "YYYY-MM-DD hh:mm:ss").utc().local().format("DD-MMM-YYYY hh:mm A")}
+              { moment(updatedOn + '+00:00').local().format("DD-MMM-YYYY hh:mm A")}
               </span>
             </p>
           </div>
@@ -65,8 +64,8 @@ export const DeliveryCard = ({ data }) => {
               className="mb-0 txt"
               style={{ alignItems: "center", textAlign: "end" }}
             >
-              <span className={`${status == "C" ? "badge bg-danger p-1" : eventType == "DC" ? "badge bg-success p-1" : "badge bg-secondary p-1"}`}>
-                {status === "C" ? "cancelled" : eventType == "DC" ? "delivered": "yet to deliver"}
+              <span className={`${status === "C" ? "badge bg-danger p-1" : eventType === "DC" ? "badge bg-success p-1" : "badge bg-secondary p-1"}`}>
+                {status === "C" ? "cancelled" : eventType === "DC" ? "delivered": "yet to deliver"}
               </span>
             </p>
           </div>

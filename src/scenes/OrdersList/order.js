@@ -31,17 +31,23 @@ export const Order = ({ data, handleOrderData }) => {
       <div className="row border border-dark1 rounded p-2">
         <div className="row m-0 p-0">
           <div className="col p-0 text-start">
-          <p className="d-flex mb-0 normal-txt" style={{alignItems:"center"}}>
-            <FaHashtag className="me-2" />
-            <small>{orderId}</small>
-          </p>
+            <p
+              className="d-flex mb-0 normal-txt"
+              style={{ alignItems: "center" }}
+            >
+              <FaHashtag className="me-2" />
+              <small>{orderId}</small>
+            </p>
           </div>
           <div className="col p-0 text-end">
             <p className="badge bg-secondary p-1 mb-0">yet to deliver</p>
           </div>
         </div>
         <div className="p-0 text-start">
-          <p className="d-flex mb-0 normal-txt" style={{alignItems:"center"}}>
+          <p
+            className="d-flex mb-0 normal-txt"
+            style={{ alignItems: "center" }}
+          >
             <BsPersonSquare className="me-2" />
             <small>{name}</small>
           </p>
