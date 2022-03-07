@@ -17,6 +17,7 @@ export const Order = ({ data, handleOrderData }) => {
     customer_name: name,
     customer_mobile: mobile,
     customer_address: address,
+    order_id: orderId,
     // meal_type: mealType,
   } = data;
 
@@ -32,7 +33,7 @@ export const Order = ({ data, handleOrderData }) => {
           <div className="col p-0 text-start">
           <p className="d-flex mb-0 normal-txt" style={{alignItems:"center"}}>
             <FaHashtag className="me-2" />
-            <small>{`143`}</small>
+            <small>{orderId}</small>
           </p>
           </div>
           <div className="col p-0 text-end">

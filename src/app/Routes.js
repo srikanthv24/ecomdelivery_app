@@ -9,7 +9,6 @@ import { DeliveriesList } from "../scenes/DeliveriesList";
 function Routes() {
   const { isLoggedIn } = useSelector((state) => state.auth);
 
-  console.log("isLoggedIn", isLoggedIn);
   return (
     <>
       {!isLoggedIn && (

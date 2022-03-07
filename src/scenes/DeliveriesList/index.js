@@ -10,13 +10,12 @@ import { Spinner } from "../../components/Spinner/spinner";
 
 export const DeliveriesList = () => {
   const dispatch = useDispatch();
-  // const { userDetails } = useSelector((state) => state.auth);
+  const { userDetails } = useSelector((state) => state.auth);
   const { loading, error, list } = useSelector(state => state.deliveriesList);
   const [ Deliveries, setDeliveries] = useState([]);
   const [filters, setFilters] = useState({
-    // mobile: userDetails.phone_number.replace("+91", ""),
-    mobile:"9550163323",
-    fromDate: moment().subtract(2, 'days').format("YYYY-MM-DD"),
+    mobile: userDetails.phone_number.replace("+91", ""),
+    fromDate: moment().format("YYYY-MM-01"),
     toDate: moment().format("YYYY-MM-DD"),
     type: "all"
   });
@@ -31,7 +30,6 @@ export const DeliveriesList = () => {
     }
   }, [list]);
 
-  console.log("eve", Deliveries);
   return (
     <div className="container mt-5 p-3">
       <>
@@ -89,7 +87,7 @@ export const DeliveriesList = () => {
           </div>
         )}
         {Deliveries && Deliveries.length === 0 && !loading && (
-          <h6 className="mt-5">No Orders Assigned</h6>
+          <h6 className="mt-5">No Deliveries</h6>
         )}
           {Deliveries && Deliveries.length > 0 && Deliveries.map((data, index) => {
             return <DeliveryCard key={index} data={data} />;

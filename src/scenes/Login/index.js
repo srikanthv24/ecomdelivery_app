@@ -29,7 +29,7 @@ function Login() {
 
     // const ClientId = process.env.CLIENT_ID;
   
-    console.log("tokenList:::::::::", tokenList);
+    //console.log("tokenList:::::::::", tokenList);
   
     const getUserDetails = () => {
       auth_services.getUser().then((res) => {
@@ -44,14 +44,14 @@ function Login() {
           .login(phone, password)
           .then((res) => {
             getUserDetails();
-            console.log("OnSuccess: ", res, res.accessToken);
+            //console.log("OnSuccess: ", res, res.accessToken);
             dispatch(loginSuccess(res));
             sessionStorage.setItem("access_token", res.accessToken.jwtToken);
             sessionStorage.setItem("id_token", res.idToken.jwtToken);
             // dispatch(hideLogin())
           })
           .catch((err) => {
-            console.log("onFailure: ", err.message);
+            //console.log("onFailure: ", err.message);
             dispatch(authError(err.message));
           });
       };

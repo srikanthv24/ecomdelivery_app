@@ -26,11 +26,11 @@ function App() {
     authServices
       .getUser()
       .then((res) => {
-        console.log("RESSSS", res);
+        //console.log("RESSSS", res);
         dispatch(updateUserDetails(res));
       })
       .catch((err) => {
-        console.log("FAILEEEDDDD", err);
+        //console.log("FAILEEEDDDD", err);
       });
 
       // return () => {

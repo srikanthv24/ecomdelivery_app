@@ -9,6 +9,7 @@ export const OrderView = ({
   OrderData,
 }) => {
   const {
+    order_id: orderId,
     customer_address: address,
     customer_mobile: mobile,
     customer_name: name,
@@ -18,11 +19,10 @@ export const OrderView = ({
     sed_id,
   } = OrderData;
 
-  console.log("nayan", OrderData)
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>#143</Modal.Title>
+        <Modal.Title>{`#${orderId}`}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <h6>{name}</h6>

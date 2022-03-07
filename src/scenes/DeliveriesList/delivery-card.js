@@ -65,8 +65,8 @@ export const DeliveryCard = ({ data }) => {
               className="mb-0 txt"
               style={{ alignItems: "center", textAlign: "end" }}
             >
-              <span className={`${status == "C" ? "badge bg-danger p-1" : eventType == "DC" ? "badge bg-success p-1" : "badge bg-primary p-1"}`}>
-                {status === "C" ? "cancelled" : eventType == "DC" ? "delivered": "Inprogress"}
+              <span className={`${status == "C" ? "badge bg-danger p-1" : eventType == "DC" ? "badge bg-success p-1" : "badge bg-secondary p-1"}`}>
+                {status === "C" ? "cancelled" : eventType == "DC" ? "delivered": "yet to deliver"}
               </span>
             </p>
           </div>

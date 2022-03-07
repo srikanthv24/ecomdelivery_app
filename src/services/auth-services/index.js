@@ -25,15 +25,15 @@ import UserPool from './UserPool';
       return new Promise((resolve, reject) => {
         user.authenticateUser(authDetails, {
           onSuccess: (data) => {
-            console.log("OnSuccess: ", data, data.accessToken);
+            //console.log("OnSuccess: ", data, data.accessToken);
             resolve(data);
           },
           onFailure: (err) => {
-            console.log("onFailure: ", err.message);
+            //console.log("onFailure: ", err.message);
             reject(err);
           },
           newPasswordRequired: (data) => {
-            console.log("newPasswordRequired: ", data);
+            //console.log("newPasswordRequired: ", data);
           },
         });
       });
@@ -79,11 +79,11 @@ import UserPool from './UserPool';
           null,
           function (error, data) {
             if (data) {
-              console.log("succesfully created the user:::", data);
+              //console.log("succesfully created the user:::", data);
   
               resolve(data);
             } else {
-              console.log("error in registering user:::", error.message);
+              //console.log("error in registering user:::", error.message);
               reject(error);
             }
           }
@@ -102,14 +102,14 @@ import UserPool from './UserPool';
           });
   
           cognitoUser.getSession((err, res) => {
-            console.log("ERR-RESS", err, res);
+            //console.log("ERR-RESS", err, res);
           });
   
           cognitoUser.getUserAttributes((err, result) => {
             let temp = {};
             if (result) {
               result.map((item) => {
-                console.log("MyData", item);
+                //console.log("MyData", item);
                 switch (item.Name) {
                   case "name":
                     temp.name = item.Value;

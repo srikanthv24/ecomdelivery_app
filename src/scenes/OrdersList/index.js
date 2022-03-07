@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import moment from "moment";
 import { Order } from "./order";
 import { CancelOrder } from "./cancel-order";
 import { OrderView } from "./order-view";
-import { changeEventType, getOrders } from "../../store/actions";
-import { useDispatch, useSelector } from "react-redux";
-import "./styles.css";
-//import dummylist from "./delivery_list";
-import { DissmisibleAlert } from "../../components/Alert/alert";
-import { closeFeedbackSnackbar } from "../../store/actions";
-import moment from "moment";
 import { Spinner } from "../../components/Spinner/spinner";
+import { DissmisibleAlert } from "../../components/Alert/alert";
+import { changeEventType, getOrders } from "../../store/actions";
+import { closeFeedbackSnackbar } from "../../store/actions";
+import './styles.css';
 
 export const OrdersList = () => {
   const dispatch = useDispatch();
@@ -27,6 +26,7 @@ export const OrdersList = () => {
   const [list, setList] = useState([]);
   const [currentOrder, setCurrentOrder] = useState({});
   const [show, setShow] = useState(false);
+  const [cancelModal, setCancelModal] = useState(false);
 
   const handleUpdateOrder = () => {
     setShow(false);
@@ -37,13 +37,11 @@ export const OrdersList = () => {
         filters: {
           mobile: userDetails.phone_number.replace("+91", ""),
           startDate: moment().format("YYYY-MM-DD"),
-          // toDate: moment().add(1, "days").format("YYYY-MM-DD"),
         },
       })
     );
   };
 
-  const [cancelModal, setCancelModal] = useState(false);
 
   const handleCancelModal = () => {
     setCancelModal(true);
@@ -59,14 +57,10 @@ export const OrdersList = () => {
         filters: {
           mobile: userDetails.phone_number.replace("+91", ""),
           startDate: moment().format("YYYY-MM-DD"),
-          // toDate: moment().add(1, "days").format("YYYY-MM-DD"),
         },
       })
     );
   };
-
-  console.log("myOrders", orderslist);
-  console.log("userDEtails", userDetails);
 
   useEffect(async() => {
       const token = await sessionStorage.getItem("id_token");
@@ -74,13 +68,10 @@ export const OrdersList = () => {
       if (userDetails.phone_number && userDetails.phone_number?.length) {
         let mobNum = userDetails.phone_number.replace("+91", "");
         let sDate = moment().format("YYYY-MM-DD");
-        // let tDate = moment().add(1, "days").format("YYYY-MM-DD");
-        // let mobNum = "9951882523"
         dispatch(
           getOrders({
             mobile: mobNum,
             startDate: sDate,
-            // toDate: tDate,
           })
         );
         setList([]);
@@ -104,12 +95,6 @@ export const OrdersList = () => {
   const handleOrderData = (data) => {
     setShow(true);
   };
-
-  // const closeDismisibleModal = () => {
-  //   dispatch(closeFeedbackSnackbar())
-  // }
-
-  console.log("listXXX", list);
 
   return (
     <div className="container mt-5 p-3">
