@@ -14,7 +14,8 @@ export const DeliveriesList = () => {
   const [Deliveries, setDeliveries] = useState([]);
   const [filters, setFilters] = useState({
     mobile: userDetails.phone_number.replace("+91", ""),
-    fromDate: moment().format("YYYY-MM-01"),
+    // fromDate: moment().format("YYYY-MM-01"),
+    fromDate: moment().format("YYYY-MM-DD"),
     toDate: moment().format("YYYY-MM-DD"),
     type: "all",
   });
