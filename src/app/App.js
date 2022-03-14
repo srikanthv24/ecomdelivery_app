@@ -38,6 +38,8 @@ function App() {
       // }
    }, []);
 
+   console.log("ENVIRONMENT:::", process.env);
+
   return (
     <div className="App">
       <SessionModal 
